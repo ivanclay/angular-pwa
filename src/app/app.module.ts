@@ -31,11 +31,13 @@ import {AppRoutingModule} from "./app-routing.module";
         LessonsComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         HttpClientModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+
     ],
     providers: [
         LessonsService
